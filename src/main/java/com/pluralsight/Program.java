@@ -49,6 +49,8 @@ public class Program {
         }
         double averageAge = (double) totalAge / people.size();
         System.out.println("Average age: " + averageAge);
+        //could use for each loops for finding min and max age, not sure which is best
+        //it is better to save as variables or can I just print the results?
         people.sort(Comparator.comparingInt(Person::getAge));
         System.out.println("Oldest person: " + (people.get(people.size() - 1)));
         System.out.println("Youngest person" + (people.get(0)));
