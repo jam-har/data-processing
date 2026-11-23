@@ -31,15 +31,21 @@ public class Program {
 
         for (Person person : people) {
             if (person.getFirstName().toLowerCase().contains(search.toLowerCase()) || person.getLastName().toLowerCase().contains(search.toLowerCase())) {
-                results.add(person);
+                results.add(person);//looking for exact match, so use equalsignorecase
                 found = true;
             }
 
         }
+        /*stream (this can be one line of code)
+        List<Person> results =
+                people
+                    .stream().filter(person -> person.getLastName().equalsIgnoreCase(search))
+                    .toList();*/
         if (!found) {
             System.out.println("No results found");
         }
-        System.out.println(results);
+        System.out.println(results);//better to use iteration to print each element separately or .foreach stream
+        //results.forEach(result -> System.out.pring.ln(result) .stream is not necessary w/ for each
         System.out.println();
 
         System.out.println("Step 3");
@@ -50,9 +56,10 @@ public class Program {
         double averageAge = (double) totalAge / people.size();
         System.out.println("Average age: " + averageAge);
         //could use for each loops for finding min and max age, not sure which is best
-        //it is better to save as variables or can I just print the results?
+        //^better to use loops (use max int and min int for comparison)
+        //it is better to save as variables or can I just print the results? - better to save
         people.sort(Comparator.comparingInt(Person::getAge));
-        System.out.println("Oldest person: " + (people.get(people.size() - 1)));
+        System.out.println("Oldest person: " + (people.get(people.size() - 1)));//see above
         System.out.println("Youngest person" + (people.get(0)));
     }
 
